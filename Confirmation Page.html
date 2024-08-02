@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+</head>
+
+<body>
+    <header>
+        <h1>Registration Confirmation</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="registration.html">Registration Form</a>
+        <a href="contact.html">Contact</a>
+        <a href="team-formation.html">Team Formation</a>
+        <a href="fee-calculator.html">Fee Calculator</a>
+    </nav>
+    <main>
+        <h1>Thank you for registering!</h1>
+        <p>Your registration details are as follows:</p>
+        <div id="registration-details"></div>
+        <a href="index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 University Hackathon</p>
+    </footer>
+
+    <script>
+        window.onload = function () {
+            fetch('/registration-details')
+                .then(response => response.json())
+                .then(data => {
+                    const detailsDiv = document.getElementById('registration-details');
+                    detailsDiv.innerHTML = `
+                        <p>Name: ${data.name}</p>
+                        <p>Email: ${data.email}</p>
+                        <p>Phone Number: ${data.phone}</p>
+                        <p>Skill Set: ${data.skillset}</p>
+                        <p>Experience Level: ${data.experience}</p>
+                    `;
+                });
+        };
+    </script>
+</body>
+
+</html>

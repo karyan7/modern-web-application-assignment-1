@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Team Formation</title>
+</head>
+
+<body>
+    <header>
+        <h1>Team Formation</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="registration.html">Registration Form</a>
+        <a href="contact.html">Contact</a>
+        <a href="fee-calculator.html">Fee Calculator</a>
+    </nav>
+    <main>
+        <form>
+            <label for="team-name">Team Name:</label>
+            <input type="text" id="team-name" name="team-name" required><br>
+
+            <label for="team-leader">Team Leader:</label>
+            <input type="text" id="team-leader" name="team-leader" required><br>
+
+            <label for="team-member1">Team Member 1:</label>
+            <input type="text" id="team-member1" name="team-member1" required><br>
+
+            <label for="team-member2">Team Member 2:</label>
+            <input type="text" id="team-member2" name="team-member2"><br>
+
+            <label for="team-member3">Team Member 3:</label>
+            <input type="text" id="team-member3" name="team-member3"><br>
+
+            <label for="project-category">Project Category:</label>
+            <select id="project-category" name="project-category" required>
+                <option value="web-development">Web Development</option>
+                <option value="mobile-app">Mobile App</option>
+                <option value="data-science">Data Science</option>
+            </select><br>
+
+            <output id="team-summary"></output><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 University Hackathon</p>
+    </footer>
+
+    <script>
+        const teamName = document.getElementById('team-name');
+        const teamLeader = document.getElementById('team-leader');
+        const teamMembers = document.querySelectorAll('input[type="text"]');
+        const projectCategory = document.getElementById('project-category');
+        const teamSummary = document.getElementById('team-summary');
+
+        function updateSummary() {
+            teamSummary.innerHTML = `
+                <h2>Team Summary</h2>
+                <p>Team Name: ${teamName.value}</p>
+                <p>Team Leader: ${teamLeader.value}</p>
+                <p>Team Members: 
+                    ${Array.from(teamMembers).map(member => member.value).filter(val => val).join(', ')}
+                </p>
+                <p>Project Category: ${projectCategory.value}</p>
+            `;
+        }
+
+        document.querySelector('form').oninput = updateSummary;
+    </script>
+</body>
+
+</html>
